@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Demon List</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<main>
+			<h1>Demon List</h1>
+			<div id="status" aria-live="polite"></div>
+			<div id="demon-list"></div>
+		</main>
+		<!-- Editor floating button and panel -->
+		<button id="editor-button" title="Open editor">✎</button>
+
+		<div id="editor-modal" class="hidden" aria-hidden="true">
+			<div class="modal-content">
+				<h3>Enter PIN to open editor</h3>
+				<input id="pin-input" type="password" inputmode="numeric" placeholder="PIN" />
+				<div class="modal-actions">
+					<button id="pin-submit">Unlock</button>
+					<button id="pin-cancel">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+		<aside id="editor-panel" class="hidden" aria-hidden="true">
+			<header>
+				<strong>List Editor</strong>
+				<div class="editor-actions">
+					<button id="editor-close">Close</button>
+					<button id="download-json">Download JSON</button>
+				</div>
+			</header>
+			<main id="editor-content">
+				<div id="editor-list"></div>
+				<hr />
+				<section id="editor-add">
+					<h4>Add New Entry</h4>
+					<div class="fields">
+						<input id="new-level" placeholder="Level name" />
+						<input id="new-points" placeholder="Points" />
+						<input id="new-id" placeholder="ID" />
+						<input id="new-verifier" placeholder="Verifier" />
+						<input id="new-verify_date" placeholder="Verify date (YYYY-MM-DD)" />
+						<input id="new-initial_rank" placeholder="Initial rank" />
+						<input id="new-verifier_fruit" placeholder="Verifier fruit" />
+						<input id="new-victors" placeholder="Victors (comma separated)" />
+					</div>
+					<div class="add-actions">
+						<button id="add-entry">Add Entry</button>
+					</div>
+				</section>
+			</main>
+		</aside>
+		<script src="script.js"></script>
+	</body>
+</html>

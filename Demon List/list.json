@@ -1,0 +1,26 @@
+﻿{
+  "levels": [
+    {
+      "level": "ReTraY",
+      "points": 0.01,
+      "id": 6508283,
+      "verifier": "itzsushii",
+      "verify_date": "2026-04-20",
+      "initial_rank": 1,
+      "current_rank": 1,
+      "verifier_fruit": "Tangerine",
+      "victors": []
+    },
+    {
+      "level": "Gus Joins Blackpink",
+      "points": 0.01,
+      "id": 90506247,
+      "verifier": "FreezeOn60HZ",
+      "verify_date": "2026-04-21",
+      "initial_rank": 2,
+      "current_rank": 2,
+      "verifier_fruit": "Apple",
+      "victors": ["itzsushii"]
+    }
+  ]
+}
