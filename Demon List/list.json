@@ -1,4 +1,4 @@
-﻿{
+{
   "levels": [
     {
       "level": "ReTraY",
@@ -11,7 +11,7 @@
       "verifier_fruit": "Tangerine",
       "victors": [],
       "image": "https://i.ytimg.com/vi/yGiG9M7mK2M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAsQuHictmctncI7Udb0Mcio00VBw",
-      "showcase_url": "https://youtube.com/...", 
+      "showcase_url": "https://youtube.com/...",
       "verification_url": "https://youtube.com/..."
     },
     {
@@ -23,10 +23,28 @@
       "initial_rank": 2,
       "current_rank": 2,
       "verifier_fruit": "Apple",
-      "victors": ["itzsushii"],
+      "victors": [
+        "itzsushii"
+      ],
       "image": "https://i.ytimg.com/vi/QENuHJvXAd4/maxresdefault.jpg",
-      "showcase_url": "https://youtube.com/...", 
+      "showcase_url": "https://youtube.com/...",
       "verification_url": "https://youtube.com/..."
+    },
+    {
+      "level": "Test",
+      "points": 0,
+      "id": 1,
+      "verifier": "Zoink",
+      "verify_date": "2000-01-01",
+      "initial_rank": 3,
+      "current_rank": 3,
+      "image": "https://i.ytimg.com/vi/CELNmHwln_c/hqdefault.jpg?v=683246a1",
+      "verifier_fruit": "Grape",
+      "showcase_url": "https://www.youtube.com/watch?v=F05aMR0F6YM",
+      "verification_url": "https://www.youtube.com/watch?v=CELNmHwln_c",
+      "victors": [
+        "WPopOff"
+      ]
     }
   ]
 }

@@ -5,6 +5,7 @@ const container = document.getElementById('demon-list');
 let lastJSON = null;
 let currentData = null;
 let editorUnlocked = false;
+let loadInterval = null;
 
 function setStatus(text, isError = false) {
 	statusEl.textContent = text;
@@ -164,7 +165,7 @@ async function load() {
 }
 
 load();
-setInterval(load, 5000);
+loadInterval = setInterval(load, 5000);
 
 // --- Editor UI ---
 // Simple hardcoded PIN (no env lookup)
@@ -194,6 +195,8 @@ function closePinModal() {
 
 function openEditor() {
 	editorUnlocked = true;
+	// stop automatic JSON refresh once editor is opened/unlocked
+	if (loadInterval) { clearInterval(loadInterval); loadInterval = null; }
 	editorPanel.classList.remove('hidden');
 	editorPanel.setAttribute('aria-hidden', 'false');
 	renderEditorList();
@@ -244,12 +247,16 @@ function renderEditorList() {
 		const inpVerifier = makeInput('verifier', 'Verifier');
 		const inpDate = makeInput('verify_date', 'Verify date');
 		const inpRank = makeInput('initial_rank', 'Initial rank');
+		const inpCurrentRank = makeInput('current_rank', 'Current rank');
+		const inpImage = makeInput('image', 'Image URL');
 		const inpFruit = makeInput('verifier_fruit', 'Verifier fruit');
+		const inpShowcase = makeInput('showcase_url', 'Showcase URL');
+		const inpVerification = makeInput('verification_url', 'Verification URL');
 		const inpVictors = document.createElement('input');
 		inpVictors.value = Array.isArray(item.victors) ? item.victors.join(', ') : (item.victors || '');
 		inpVictors.placeholder = 'Victors (comma separated)';
 
-		[inpLevel, inpPoints, inpId, inpVerifier, inpDate, inpRank, inpFruit, inpVictors].forEach(i => fields.appendChild(i));
+		[inpLevel, inpPoints, inpId, inpVerifier, inpDate, inpRank, inpCurrentRank, inpImage, inpFruit, inpShowcase, inpVerification, inpVictors].forEach(i => fields.appendChild(i));
 
 		const actions = document.createElement('div');
 		actions.className = 'editor-item-actions';
@@ -266,7 +273,12 @@ function renderEditorList() {
 			item.verify_date = inpDate.value || item.verify_date;
 			const ir = parseInt(inpRank.value, 10);
 			item.initial_rank = isNaN(ir) ? item.initial_rank : ir;
+			const cr = parseInt(inpCurrentRank.value, 10);
+			item.current_rank = isNaN(cr) ? item.current_rank : cr;
+			item.image = inpImage.value || item.image;
 			item.verifier_fruit = inpFruit.value || item.verifier_fruit;
+			item.showcase_url = inpShowcase.value || item.showcase_url;
+			item.verification_url = inpVerification.value || item.verification_url;
 			item.victors = inpVictors.value.split(',').map(s => s.trim()).filter(Boolean);
 			// update view
 			lastJSON = JSON.stringify(currentData);
@@ -303,7 +315,11 @@ addEntryBtn.addEventListener('click', () => {
 		verifier: document.getElementById('new-verifier').value || 'N/A',
 		verify_date: document.getElementById('new-verify_date').value || new Date().toISOString().slice(0,10),
 		initial_rank: (function(){const v=parseInt(document.getElementById('new-initial_rank').value,10); return isNaN(v)?0:v})(),
+		current_rank: (function(){const v=parseInt(document.getElementById('new-current_rank').value,10); return isNaN(v)?null:v})(),
+		image: document.getElementById('new-image').value || '',
 		verifier_fruit: document.getElementById('new-verifier_fruit').value || 'N/A',
+		showcase_url: document.getElementById('new-showcase_url').value || '',
+		verification_url: document.getElementById('new-verification_url').value || '',
 		victors: (document.getElementById('new-victors').value || '').split(',').map(s=>s.trim()).filter(Boolean)
 	};
 	if (!currentData) currentData = { levels: [] };
@@ -312,7 +328,7 @@ addEntryBtn.addEventListener('click', () => {
 	renderList(currentData);
 	renderEditorList();
 	// clear new fields
-	['new-level','new-points','new-id','new-verifier','new-verify_date','new-initial_rank','new-verifier_fruit','new-victors'].forEach(id => document.getElementById(id).value='');
+	['new-level','new-points','new-id','new-verifier','new-verify_date','new-initial_rank','new-current_rank','new-image','new-verifier_fruit','new-showcase_url','new-verification_url','new-victors'].forEach(id => document.getElementById(id).value='');
 });
 
 downloadBtn.addEventListener('click', () => {
