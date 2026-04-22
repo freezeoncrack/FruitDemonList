@@ -9,7 +9,10 @@
       "initial_rank": 1,
       "current_rank": 1,
       "verifier_fruit": "Tangerine",
-      "victors": []
+      "victors": [],
+      "image": "https://i.ytimg.com/vi/yGiG9M7mK2M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAsQuHictmctncI7Udb0Mcio00VBw",
+      "showcase_url": "https://youtube.com/...", 
+      "verification_url": "https://youtube.com/..."
     },
     {
       "level": "Gus Joins Blackpink",
@@ -20,7 +23,10 @@
       "initial_rank": 2,
       "current_rank": 2,
       "verifier_fruit": "Apple",
-      "victors": ["itzsushii"]
+      "victors": ["itzsushii"],
+      "image": "https://i.ytimg.com/vi/QENuHJvXAd4/maxresdefault.jpg",
+      "showcase_url": "https://youtube.com/...", 
+      "verification_url": "https://youtube.com/..."
     }
   ]
 }

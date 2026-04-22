@@ -35,9 +35,20 @@ function renderList(data) {
 		const card = document.createElement('article');
 		card.className = 'card';
 
+		// Rank element (uses current_rank, falls back to initial_rank)
+		const rankEl = document.createElement('div');
+		rankEl.className = 'rank';
+		const rankValue = (item.current_rank !== undefined && item.current_rank !== null) ? item.current_rank : item.initial_rank;
+		rankEl.textContent = '#'+formatValue(rankValue, 'N/A');
+		card.appendChild(rankEl);
+
+		// Content container for the card (to the right of rank)
+		const content = document.createElement('div');
+		content.className = 'card-content';
+
 		const title = document.createElement('h2');
 		title.textContent = formatValue(item.level);
-		card.appendChild(title);
+		content.appendChild(title);
 
 		const meta = document.createElement('div');
 		meta.className = 'meta';
@@ -59,7 +70,53 @@ function renderList(data) {
 		victors.innerHTML = `<strong>Victors:</strong> ${escapeHtml(victorsList)}`;
 		meta.appendChild(victors);
 
-		card.appendChild(meta);
+		content.appendChild(meta);
+		card.appendChild(content);
+
+		// Media group: actions (buttons) + thumbnail (stuck together on the right)
+		if (item.image || item.showcase_url || item.verification_url) {
+			const media = document.createElement('div');
+			media.className = 'media';
+
+			const actions = document.createElement('div');
+			actions.className = 'actions';
+
+			// Create action links (styled as buttons) when URLs exist
+			if (item.showcase_url) {
+				const a = document.createElement('a');
+				a.className = 'btn';
+				a.href = item.showcase_url;
+				a.target = '_blank';
+				a.rel = 'noopener noreferrer';
+				a.textContent = 'View Showcase';
+				actions.appendChild(a);
+			}
+
+			if (item.verification_url) {
+				const a = document.createElement('a');
+				a.className = 'btn';
+				a.href = item.verification_url;
+				a.target = '_blank';
+				a.rel = 'noopener noreferrer';
+				a.textContent = 'View Verification';
+				actions.appendChild(a);
+			}
+
+			media.appendChild(actions);
+
+			const img = document.createElement('img');
+			img.className = 'thumb';
+			if (item.image) {
+				img.src = item.image;
+				img.alt = formatValue(item.level) + ' thumbnail';
+				img.onerror = () => { img.style.display = 'none'; };
+			} else {
+				img.style.display = 'none';
+			}
+			media.appendChild(img);
+
+			card.appendChild(media);
+		}
 
 		row.appendChild(card);
 	});
