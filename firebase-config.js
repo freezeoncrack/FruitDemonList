@@ -1,13 +1,14 @@
 // Replace the placeholder values with your Firebase project settings.
 // You can find these in Firebase Console > Project Settings > General > Your apps.
 window.FIREBASE_CONFIG = {
-	apiKey: 'REPLACE_ME',
-	authDomain: 'REPLACE_ME.firebaseapp.com',
-	databaseURL: 'https://REPLACE_ME-default-rtdb.firebaseio.com',
-	projectId: 'REPLACE_ME',
-	storageBucket: 'REPLACE_ME.appspot.com',
-	messagingSenderId: 'REPLACE_ME',
-	appId: 'REPLACE_ME'
+  apiKey: "AIzaSyD60dHCiGedOpxiwzAgKrtA--HOLPwS_RU",
+  authDomain: "fruitdemonlist.firebaseapp.com",
+  projectId: "fruitdemonlist",
+  storageBucket: "fruitdemonlist.firebasestorage.app",
+  messagingSenderId: "946062780066",
+  appId: "1:946062780066:web:52358adcd1bb99f82dd9fb",
+  measurementId: "G-DSM1XZW9NX"
+};
 };
 
 // Root path where list data is stored.
