@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>Demon List</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<main>
@@ -13,7 +13,7 @@
 			<div id="status" aria-live="polite"></div>
 			<div id="demon-list"></div>
 		</main>
-		<!-- Editor floating button and panel -->
+
 		<button id="editor-button" title="Open editor">✎</button>
 
 		<div id="editor-modal" class="hidden" aria-hidden="true">
@@ -29,13 +29,13 @@
 
 		<aside id="editor-panel" class="hidden" aria-hidden="true">
 			<header>
-				<strong>List Editor</strong>
+				<strong>Live List Editor</strong>
 				<div class="editor-actions">
 					<button id="editor-close">Close</button>
-					<button id="download-json">Download JSON</button>
 				</div>
 			</header>
 			<main id="editor-content">
+				<p class="editor-hint">Changes save to Firebase instantly for all viewers.</p>
 				<div id="editor-list"></div>
 				<hr />
 				<section id="editor-add">
@@ -60,6 +60,10 @@
 				</section>
 			</main>
 		</aside>
+
+		<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database-compat.js"></script>
+		<script src="firebase-config.js"></script>
 		<script src="script.js"></script>
 	</body>
 </html>
